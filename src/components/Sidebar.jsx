@@ -8,7 +8,7 @@ import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivism
 import SmsOutlinedIcon from "@mui/icons-material/SmsOutlined";
 const Sidebar = () => {
   return (
-    <div className="bg-[#3325ae] h-screen w-20 ml-10 rounded-full flex flex-col p-4">
+    <div className="bg-[#3325ae] xs:hidden h-screen w-20 ml-10 rounded-full flex flex-col p-4">
       <div className="flex flex-col items-center justify-between h-full">
         <WbSunnyOutlinedIcon
           fontSize="15"

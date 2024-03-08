@@ -103,7 +103,27 @@ const Home = () => {
       },
     ],
   };
-  const stateWiseData = data?.[selectedState] || {};
+
+  // Data for BarGraph
+  const barGraphData = {
+    confirmed,
+    deaths,
+    recovered,
+  };
+
+  // Calculate percentages
+  const percentageConfirmed =
+    getTotalCasesForState(selectedState) !== 0
+      ? ((confirmed / getTotalCasesForState(selectedState)) * 100).toFixed(2)
+      : 0;
+  const percentageRecovered =
+    getTotalCasesForState(selectedState) !== 0
+      ? ((recovered / getTotalCasesForState(selectedState)) * 100).toFixed(2)
+      : 0;
+  const percentageDeaths =
+    getTotalCasesForState(selectedState) !== 0
+      ? ((deaths / getTotalCasesForState(selectedState)) * 100).toFixed(2)
+      : 0;
 
   return (
     <div className="flex">
@@ -143,7 +163,7 @@ const Home = () => {
                     <StatBox
                       title="Cases"
                       cases={confirmed}
-                      percentageIncrease={10}
+                      percentageIncrease={percentageConfirmed}
                       casesColor="#26b8de"
                       lineGraphColor="green"
                       lineGraphData={lineGraphData}
@@ -151,7 +171,7 @@ const Home = () => {
                     <StatBox
                       title="Deaths"
                       cases={deaths}
-                      percentageIncrease={5}
+                      percentageIncrease={percentageDeaths}
                       casesColor="#dc453d"
                       lineGraphColor="purple"
                       lineGraphData={lineGraphData}
@@ -159,7 +179,7 @@ const Home = () => {
                     <StatBox
                       title="Recovery"
                       cases={recovered}
-                      percentageIncrease={8}
+                      percentageIncrease={percentageRecovered}
                       casesColor="#95c251"
                       lineGraphColor="orange"
                       lineGraphData={lineGraphData}
@@ -169,7 +189,7 @@ const Home = () => {
                   <p>Loading.....</p>
                 )}
               </div>
-              <BarGraph stateWiseData={stateWiseData} />
+              <BarGraph barGraphData={barGraphData} />
               <div className="flex items-center bg-white w-[1000px] mt-2 rounded-lg">
                 <div className="flex flex-col flex-grow p-6">
                   <h1 className="text-black font-bold text-2xl">State Map</h1>

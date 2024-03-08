@@ -7,7 +7,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 const Navbar = () => {
   return (
     <div className="bg-white mt-6">
-      <div className="flex flex-row justify-between items-center px-8">
+      <div className="flex flex-row xs:justify-around justify-between items-center px-8">
         <div>
           <h2 className="text-purple-500 text-3xl font-semibold">Covid-19</h2>
           <p className="text-gray-400 text-sm mt-1">Live Tracker Dashboard</p>
